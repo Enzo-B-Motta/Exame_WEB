@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-// Styled Components
 const Container = styled.div`
   padding: 20px;
   text-align: center;
@@ -69,7 +68,6 @@ function LocalStoragePage() {
   const [input2, setInput2] = useState('');
   const [storedData, setStoredData] = useState({});
 
-  // Carregar todos os dados do LocalStorage ao carregar a página
   useEffect(() => {
     loadStoredData();
   }, []);
@@ -80,12 +78,11 @@ function LocalStoragePage() {
       const key = localStorage.key(i);
       const value = localStorage.getItem(key);
       
-      // Tentar parsear o valor armazenado e tratar erros
       try {
         data[key] = JSON.parse(value);
       } catch (e) {
         console.error("Erro ao parsear o valor para o key:", key, e);
-        data[key] = null; // Armazenar como null se não for um JSON válido
+        data[key] = null; 
       }
     }
     setStoredData(data);

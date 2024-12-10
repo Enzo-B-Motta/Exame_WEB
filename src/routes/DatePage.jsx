@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-// Styled Components
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -50,10 +49,10 @@ const Button = styled.button`
 
 function DatePage() {
   const [currentTime, setCurrentTime] = useState(new Date());
-  // Função para adicionar um dia
+  
   const addDay = () => {
     const newDate = new Date(currentTime);
-    newDate.setDate(newDate.getDate() + 1); // Adiciona 1 dia
+    newDate.setDate(newDate.getDate() + 1); 
     setCurrentTime(newDate);
   };
 

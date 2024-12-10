@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-// Styled Components
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -52,13 +52,12 @@ const Button = styled.button`
 `;
 
 function ObjectPage() {
-  // Definindo um objeto com propriedades
+  
   const [user, setUser] = useState({
     name: 'João',
     age: 25
   });
 
-  // Função para atualizar o nome
   const updateName = (event) => {
     setUser({
       ...user,
@@ -66,7 +65,6 @@ function ObjectPage() {
     });
   };
 
-  // Função para atualizar a idade
   const updateAge = (event) => {
     setUser({
       ...user,

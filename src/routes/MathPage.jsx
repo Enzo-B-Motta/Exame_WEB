@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-// Styled Components
 const Container = styled.div`
   padding: 20px;
   text-align: center;

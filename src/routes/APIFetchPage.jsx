@@ -45,7 +45,7 @@ function APIFetchPage() {
   const [city, setCity] = useState('');
   const [error, setError] = useState(null);
 
-  // Usando a chave da API a partir das variáveis de ambiente do Vite
+  
   const apiKey = import.meta.env.VITE_API_KEY;
   
   const fetchWeather = async () => {
@@ -55,8 +55,8 @@ function APIFetchPage() {
     }
 
     setLoading(true);
-    setError(null); // Limpar erros anteriores
-    setWeatherData(null); // Limpar dados de clima antigos
+    setError(null); 
+    setWeatherData(null); 
 
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=pt_br`;
 
@@ -94,7 +94,7 @@ function APIFetchPage() {
         <Button onClick={fetchWeather}>Buscar Clima</Button>
       </div>
 
-      {error && <p style={{ color: 'red' }}>{error}</p>} {/* Exibindo mensagens de erro */}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
 
       {loading && <p>Carregando...</p>}
 
