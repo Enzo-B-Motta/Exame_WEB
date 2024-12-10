@@ -78,7 +78,15 @@ function LocalStoragePage() {
     const data = {};
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
-      data[key] = localStorage.getItem(key);
+      const value = localStorage.getItem(key);
+      
+      // Tentar parsear o valor armazenado e tratar erros
+      try {
+        data[key] = JSON.parse(value);
+      } catch (e) {
+        console.error("Erro ao parsear o valor para o key:", key, e);
+        data[key] = null; // Armazenar como null se não for um JSON válido
+      }
     }
     setStoredData(data);
   };
@@ -129,12 +137,21 @@ function LocalStoragePage() {
         <h3>Dados Salvos:</h3>
         {Object.keys(storedData).length > 0 ? (
           Object.entries(storedData).map(([key, value]) => {
-            const parsedValue = JSON.parse(value);
+            // Verifica se o valor é null (não foi possível parsear)
+            if (value === null) {
+              return (
+                <DataItem key={key}>
+                  <strong>ID:</strong> {key} <br />
+                  <strong>Erro:</strong> Dados inválidos.
+                </DataItem>
+              );
+            }
+            
             return (
               <DataItem key={key}>
                 <strong>ID:</strong> {key} <br />
-                <strong>Valor 1:</strong> {parsedValue.input1} <br />
-                <strong>Valor 2:</strong> {parsedValue.input2}
+                <strong>Valor 1:</strong> {value.input1} <br />
+                <strong>Valor 2:</strong> {value.input2}
               </DataItem>
             );
           })
